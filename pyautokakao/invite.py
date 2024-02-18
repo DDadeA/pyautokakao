@@ -1,7 +1,7 @@
 from win32api import SendMessage
 from win32gui import FindWindow, FindWindowEx, GetWindowRect
 import win32con as con
-from .util import open_chat_window, press_key_with_special, wait, close_chat_window, click_left_mouse
+from .util import open_chat_window, press_key_with_special, wait, close_chat_window, click_left_mouse, config
 
 
 def invite(destination, friend_name:list, close_after: bool = True):
@@ -35,12 +35,13 @@ def invite(destination, friend_name:list, close_after: bool = True):
         SendMessage(edit, con.WM_SETTEXT, None, friend)
         wait(long_enough=True)
         
-        frindlist_origin = press_key_with_special( hwndkakao_edit2, None, "EVA_VH_ListControl_Dblclk", None)
-        frindlist = press_key_with_special( hwndkakao_edit2, frindlist_origin, "EVA_VH_ListControl_Dblclk", None)
+        frindlist_origin = FindWindowEx( hwndkakao_edit2, None, "EVA_VH_ListControl_Dblclk", None)
+        frindlist = FindWindowEx( hwndkakao_edit2, frindlist_origin, "EVA_VH_ListControl_Dblclk", None)
         wait(long_enough=True)
         
         rect = GetWindowRect(frindlist)
-        click_left_mouse(frindlist, (rect[0]+500, rect[1]+88))
+        pos = config['invite_button_position']
+        click_left_mouse(frindlist, (rect[0]+pos[0], rect[1]+pos[1]))
         wait(long_enough=True)
     
     # Enter
