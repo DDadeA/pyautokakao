@@ -23,7 +23,7 @@ import setuptools
 
 setuptools.setup(
     name="pyautokakao",
-    version="0.1.1",
+    version="0.1.2",
     license='Apache 2.0',
     author="Yeonho Jung",
     author_email="jyh2eh@gmail.com",

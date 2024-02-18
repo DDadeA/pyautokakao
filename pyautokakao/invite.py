@@ -24,6 +24,7 @@ def invite(destination, friend_name:list, close_after: bool = True):
     # Find the main window handle and list control handle
     hwndMain = FindWindow(None, destination)
     hwndListControl = FindWindowEx(hwndMain, None, "EVA_VH_ListControl_Dblclk", None)
+    wait(long_enough=True)
     
     press_key_with_special(hwndListControl, ord('I'), [con.VK_CONTROL], False)
     wait(long_enough=True)
