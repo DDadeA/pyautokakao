@@ -35,8 +35,8 @@ def invite(destination, friend_name:list, close_after: bool = True):
         SendMessage(edit, con.WM_SETTEXT, None, friend)
         wait(long_enough=True)
         
-        frindlist_origin = press_key_with_special( hwndkakao_edit2, None, "EVA_VH_ListControl_Dblclk", None)
-        frindlist = press_key_with_special( hwndkakao_edit2, frindlist_origin, "EVA_VH_ListControl_Dblclk", None)
+        frindlist_origin = FindWindowEx( hwndkakao_edit2, None, "EVA_VH_ListControl_Dblclk", None)
+        frindlist = FindWindowEx( hwndkakao_edit2, frindlist_origin, "EVA_VH_ListControl_Dblclk", None)
         wait(long_enough=True)
         
         rect = GetWindowRect(frindlist)
