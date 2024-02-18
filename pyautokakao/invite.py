@@ -1,7 +1,8 @@
 from win32api import SendMessage
 from win32gui import FindWindow, FindWindowEx, GetWindowRect
 import win32con as con
-from .util import open_chat_window, press_key_with_special, wait, close_chat_window, click_left_mouse, config
+from .util import open_chat_window, wait, close_chat_window
+from .util import press_key, press_key_with_special, click_left_mouse, config
 
 
 def invite(destination, friend_name:list, close_after: bool = True):
@@ -45,7 +46,7 @@ def invite(destination, friend_name:list, close_after: bool = True):
         wait(long_enough=True)
     
     # Enter
-    try: click_left_mouse(frindlist_origin, con.VK_RETURN)
+    try: press_key(frindlist_origin, con.VK_RETURN)
     except: pass
     
     # Close
