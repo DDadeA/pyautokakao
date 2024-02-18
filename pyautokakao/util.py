@@ -6,7 +6,10 @@ import win32con as con
 
 config = {
     "long_delay": 1,
-    "short_delay": 0.5
+    "short_delay": 0.5,
+    
+    "invite_button_position": (333, 60),
+    "make_button_position": (220, 560),
 }
 
 PBYTE256 = ctypes.c_ubyte * 256

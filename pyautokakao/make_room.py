@@ -1,7 +1,7 @@
 from win32api import SendMessage
 from win32gui import FindWindow, FindWindowEx, GetWindowRect, GetDlgItem
 import win32con as con
-from .util import wait, press_key, press_key_with_special, click_left_mouse
+from .util import wait, press_key, press_key_with_special, click_left_mouse, config
 
 def make_room(chat_name:str, friend_name:str|list):
     """
@@ -38,7 +38,8 @@ def make_room(chat_name:str, friend_name:str|list):
         wait(long_enough=True)
         
         rect = GetWindowRect(frindlist)
-        click_left_mouse(frindlist, (rect[0]+500, rect[1]+88))
+        pos = config['invite_button_position']
+        click_left_mouse(frindlist, (rect[0]+pos[0], rect[1]+pos[1]))
     wait()
     
     try: press_key(frindlist_origin, con.VK_RETURN)
@@ -53,6 +54,7 @@ def make_room(chat_name:str, friend_name:str|list):
     
     # Make Chatroom!
     rect = GetWindowRect(hwnd_set_chatroom_name)
-    click_left_mouse(hwnd_set_chatroom_name, (rect[0]+325, rect[1]+840))
+    pos = config['make_button_position']
+    click_left_mouse(hwnd_set_chatroom_name, (rect[0]+pos[0], rect[1]+pos[1]))
     
     return
